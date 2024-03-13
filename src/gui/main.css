@@ -1,0 +1,8 @@
+#label{
+    -fx-background-color: rgba(0, 0, 0, 0.67);
+    -fx-text-fill: White;
+    -fx-background-radius: 15;
+    -fx-background-size: 80%;
+    -fx-alignment: center;
+    /* Gør den dynamisk somehow, sådan at størrelsen af baggrunden passer til teksten*/
+}

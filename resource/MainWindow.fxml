@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="imgBackground" fitHeight="545.0" fitWidth="760.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Screenshot%202024-02-20%20235548.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgMainPicture" fitHeight="506.0" fitWidth="823.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Screenshot%202024-02-20%20235548.png" />
+               </image>
+            </ImageView>
+            <Label id="label" prefHeight="17.0" prefWidth="288.0" stylesheets="gui/main.css" text="PICTURE NAME" StackPane.alignment="BOTTOM_CENTER" />
+         </children>
+      </StackPane>
+   </center>
+   <top>
+      <MenuButton mnemonicParsing="false" text="MenuButton" BorderPane.alignment="TOP_LEFT">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Load Images" />
+          <MenuItem mnemonicParsing="false" text="Start Slideshow" />
+            <MenuItem mnemonicParsing="false" text="Stop Slideshow" />
+        </items>
+         <BorderPane.margin>
+            <Insets left="94.0" />
+         </BorderPane.margin>
+      </MenuButton>
+   </top>
+   <left>
+      <MFXButton buttonType="RAISED" text="Previous" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="20.0" />
+         </BorderPane.margin>
+      </MFXButton>
+   </left>
+   <right>
+      <MFXButton buttonType="RAISED" text="Next" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets right="20.0" />
+         </BorderPane.margin>
+      </MFXButton>
+   </right>
+   <bottom>
+      <Pane prefHeight="148.0" prefWidth="1020.0" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>
