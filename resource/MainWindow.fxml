@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane id="borderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1020.0" stylesheets="gui/main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainController">
    <center>
-      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <StackPane prefHeight="576.0" prefWidth="814.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="imgBackground" fitHeight="545.0" fitWidth="760.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="imgBackground" fx:id="imgBackground" fitHeight="561.0" fitWidth="785.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Screenshot%202024-02-20%20235548.png" />
                </image>
@@ -35,21 +35,22 @@
           <MenuItem mnemonicParsing="false" text="Load Images" />
           <MenuItem mnemonicParsing="false" text="Start Slideshow" />
             <MenuItem mnemonicParsing="false" text="Stop Slideshow" />
+            <MenuItem mnemonicParsing="false" text="Picture stats" />
         </items>
          <BorderPane.margin>
-            <Insets left="94.0" />
+            <Insets left="117.0" />
          </BorderPane.margin>
       </MenuButton>
    </top>
    <left>
-      <MFXButton buttonType="RAISED" text="Previous" BorderPane.alignment="CENTER">
+      <MFXButton id="btnLeft" buttonType="RAISED" text=" " BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets left="20.0" />
          </BorderPane.margin>
       </MFXButton>
    </left>
    <right>
-      <MFXButton buttonType="RAISED" text="Next" BorderPane.alignment="CENTER">
+      <MFXButton id="btnRight" buttonType="RAISED" text=" " BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets right="20.0" />
          </BorderPane.margin>

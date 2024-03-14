@@ -1,3 +1,26 @@
+/* Background color yo */
+#borderpane{
+    -fx-background-color: rgb(26, 26, 26)
+}
+
+#btnRight{
+    -fx-background-image: url(RightTriangle.png);
+    -fx-background-size: stretch;
+    -fx-background-color: transparent;
+    -fx-min-width: 70.77px;
+    -fx-min-height: 70.35px;
+}
+
+#btnLeft{
+    -fx-background-image: url(LeftTriangle.png);
+    -fx-background-size: stretch;
+    -fx-background-color: transparent;
+    -fx-min-width: 70.77px;
+    -fx-min-height: 70.35px;
+}
+
+
+
 #label{
     -fx-background-color: rgba(0, 0, 0, 0.67);
     -fx-text-fill: White;
@@ -6,3 +29,4 @@
     -fx-alignment: center;
     /* Gør den dynamisk somehow, sådan at størrelsen af baggrunden passer til teksten*/
 }
+
