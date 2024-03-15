@@ -30,7 +30,7 @@
       </StackPane>
    </center>
    <top>
-      <MenuButton mnemonicParsing="false" text="MenuButton" BorderPane.alignment="TOP_LEFT">
+      <MenuButton id="burger" mnemonicParsing="false" prefHeight="33.0" prefWidth="40.0" BorderPane.alignment="TOP_LEFT">
         <items>
           <MenuItem mnemonicParsing="false" text="Load Images" />
           <MenuItem mnemonicParsing="false" text="Start Slideshow" />

@@ -19,6 +19,43 @@
     -fx-min-height: 70.35px;
 }
 
+#burger {
+    -fx-background-image: url(Hamburger_icon.png);
+    -fx-background-color: transparent;
+    -fx-background-size: stretch;
+}
+
+.menu-item .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+
+}
+
+.menu-item:hover {
+    -fx-border-width: 1px;
+    -fx-opacity: 75%;
+}
+
+.context-menu {
+    -fx-background-color: transparent;
+}
+
+.menu-item {
+    -fx-background-color: black;
+    -fx-border-width: 1px;
+    -fx-border-color: white;
+    -fx-border-radius: 3px;
+    -fx-padding: 4px;
+}
+
+
+
+
+.menu-button > .arrow-button {
+    visibility: hidden;
+}
+
 
 
 #label{
