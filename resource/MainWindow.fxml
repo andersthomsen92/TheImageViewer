@@ -32,7 +32,7 @@
    <top>
       <MenuButton id="burger" mnemonicParsing="false" prefHeight="33.0" prefWidth="40.0" BorderPane.alignment="TOP_LEFT">
         <items>
-          <MenuItem mnemonicParsing="false" text="Load Images" />
+          <MenuItem mnemonicParsing="false" text="Load Images" onAction="#onLoadImages" />
           <MenuItem mnemonicParsing="false" text="Start Slideshow" />
             <MenuItem mnemonicParsing="false" text="Stop Slideshow" />
             <MenuItem mnemonicParsing="false" text="Picture stats" />
@@ -43,14 +43,14 @@
       </MenuButton>
    </top>
    <left>
-      <MFXButton id="btnLeft" buttonType="RAISED" text=" " BorderPane.alignment="CENTER">
+      <MFXButton id="btnLeft" buttonType="RAISED" text=" " BorderPane.alignment="CENTER" onAction="#onDisplayPreviousImage">
          <BorderPane.margin>
             <Insets left="20.0" />
          </BorderPane.margin>
       </MFXButton>
    </left>
    <right>
-      <MFXButton id="btnRight" buttonType="RAISED" text=" " BorderPane.alignment="CENTER">
+      <MFXButton id="btnRight" buttonType="RAISED" text=" " BorderPane.alignment="CENTER" onAction="#onDisplayNextImage">
          <BorderPane.margin>
             <Insets right="20.0" />
          </BorderPane.margin>
