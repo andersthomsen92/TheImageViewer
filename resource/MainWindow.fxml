@@ -13,19 +13,19 @@
 
 <BorderPane id="borderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1020.0" stylesheets="gui/main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainController">
    <center>
-      <StackPane prefHeight="576.0" prefWidth="814.0" BorderPane.alignment="CENTER">
+      <StackPane fx:id="centerStackPane" minHeight="0.0" minWidth="0.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView id="imgBackground" fx:id="imgBackground" fitHeight="561.0" fitWidth="785.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="imgBackground" fx:id="imgBackground" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Screenshot%202024-02-20%20235548.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgMainPicture" fitHeight="506.0" fitWidth="823.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgMainPicture" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Screenshot%202024-02-20%20235548.png" />
                </image>
             </ImageView>
-            <Label id="label" prefHeight="17.0" prefWidth="288.0" stylesheets="gui/main.css" text="PICTURE NAME" StackPane.alignment="BOTTOM_CENTER" />
+            <Label id="label" fx:id="label" prefHeight="25.0" prefWidth="150.0" stylesheets="gui/main.css" text="PICTURE NAME" StackPane.alignment="BOTTOM_CENTER" />
          </children>
       </StackPane>
    </center>
