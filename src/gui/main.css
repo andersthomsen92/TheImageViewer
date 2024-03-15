@@ -1,6 +1,6 @@
 /* Background color yo */
 #borderpane{
-    -fx-background-color: rgb(26, 26, 26)
+    -fx-background-color: rgb(38, 38, 38, 100);
 }
 
 #btnRight{
@@ -33,8 +33,8 @@
 }
 
 .menu-item:hover {
-    -fx-border-width: 1px;
-    -fx-opacity: 75%;
+    -fx-background-color: #00000e;
+
 }
 
 .context-menu {
@@ -46,7 +46,7 @@
     -fx-border-width: 1px;
     -fx-border-color: white;
     -fx-border-radius: 3px;
-    -fx-padding: 4px;
+    -fx-padding: 6px;
 }
 
 
