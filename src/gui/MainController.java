@@ -86,9 +86,11 @@ public class MainController {
             currentImageIndex = (currentImageIndex + 1) % loadedImages.size();
             // Display image in ImageView
             imgMainPicture.setImage(loadedImages.get(currentImageIndex));
+            imgBackground.setImage(loadedImages.get(currentImageIndex));
         } else {
             // If no images loaded, display placeholder or handle accordingly
             imgMainPicture.setImage(null);
+            imgBackground.setImage(null);
         }
     }
 
@@ -99,9 +101,11 @@ public class MainController {
             currentImageIndex = (currentImageIndex - 1) % loadedImages.size();
             // Display image in ImageView
             imgMainPicture.setImage(loadedImages.get(currentImageIndex));
+            imgBackground.setImage(loadedImages.get(currentImageIndex));
         } else {
             // If no images loaded, display placeholder or handle accordingly
             imgMainPicture.setImage(null);
+            imgBackground.setImage(null);
         }
     }
     public void onLoadImages() {
@@ -109,6 +113,7 @@ public class MainController {
         // Display first image if images loaded
         if (!loadedImages.isEmpty()) {
             imgMainPicture.setImage(loadedImages.get(0));
+            imgBackground.setImage(loadedImages.get(0));
         }
     }
 
