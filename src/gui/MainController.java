@@ -1,20 +1,20 @@
 package gui;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.effect.BoxBlur;
-import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
+import javafx.util.Duration;
 
 import java.io.File;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
 public class MainController {
 
@@ -116,6 +116,29 @@ public class MainController {
             imgBackground.setImage(loadedImages.get(0));
         }
     }
+    private Timeline slideshowTimeline = new Timeline();  // for managing the slideshow
 
+    public void onStartSlideshow() {
+        if (loadedImages.isEmpty()) {
+            System.out.println("No images loaded, can't start slideshow");
+            return;
+        }
+
+        slideshowTimeline = new Timeline(
+                new KeyFrame(Duration.seconds(1), event -> {
+                    imgMainPicture.setImage(loadedImages.get(currentImageIndex));
+                    currentImageIndex = (currentImageIndex + 1) % loadedImages.size(); // cycle to start
+                })
+        );
+
+        slideshowTimeline.setCycleCount(Timeline.INDEFINITE);
+        slideshowTimeline.play();
+    }
+
+    public void onStopSlideshow() {
+        if (slideshowTimeline != null) {
+            slideshowTimeline.stop();
+        }
+    }
 }
 
