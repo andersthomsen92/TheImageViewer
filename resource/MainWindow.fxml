@@ -2,6 +2,9 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -11,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 
-<BorderPane id="borderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1020.0" stylesheets="gui/main.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainController">
+<BorderPane id="borderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1020.0" stylesheets="gui/main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainController">
    <center>
       <StackPane fx:id="centerStackPane" minHeight="0.0" minWidth="0.0" BorderPane.alignment="CENTER">
          <children>
@@ -57,6 +60,16 @@
       </MFXButton>
    </right>
    <bottom>
-      <Pane prefHeight="148.0" prefWidth="1020.0" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="148.0" prefWidth="1020.0" BorderPane.alignment="CENTER">
+         <children>
+            <BarChart layoutX="386.0" layoutY="14.0" prefHeight="41.0" prefWidth="200.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </BarChart>
+         </children></Pane>
    </bottom>
 </BorderPane>
