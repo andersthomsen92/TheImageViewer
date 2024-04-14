@@ -52,7 +52,20 @@ public class MainController {
         imgBackground.setEffect(blur);
         imgBackground.setOpacity(0.4);
         initDynamicElements();
+        initXYSeries();
+    }
 
+    private void initDynamicElements() {
+        imgBackground.fitWidthProperty().bind(centerStackPane.widthProperty());
+        imgBackground.fitHeightProperty().bind(centerStackPane.heightProperty());
+
+        imgMainPicture.fitWidthProperty().bind(centerStackPane.widthProperty().multiply(0.9));
+        imgMainPicture.fitHeightProperty().bind(centerStackPane.heightProperty().multiply(0.9));
+
+
+    }
+
+    private void initXYSeries() {
         colorXYData = new XYChart.Series<>();
         colorXYData.setName("Color Counts");
         colorChart.getData().add(colorXYData);
@@ -63,6 +76,7 @@ public class MainController {
         colorXYData.getData().add(new XYChart.Data<>("Mixed", 0));
     }
 
+
     public void updateChart(int redCount, int greenCount, int blueCount, int mixedCount) {
         Platform.runLater(() -> {
             colorXYData.getData().get(0).setYValue(redCount);
@@ -70,16 +84,6 @@ public class MainController {
             colorXYData.getData().get(2).setYValue(blueCount);
             colorXYData.getData().get(3).setYValue(mixedCount);
         });
-    }
-
-    private void initDynamicElements() {
-        imgBackground.fitWidthProperty().bind(centerStackPane.widthProperty());
-        imgBackground.fitHeightProperty().bind(centerStackPane.heightProperty());
-        imgBackground.setPreserveRatio(true);
-
-        imgMainPicture.fitWidthProperty().bind(Bindings.multiply(imgBackground.fitWidthProperty(), 0.9));
-        imgMainPicture.fitHeightProperty().bind(Bindings.multiply(imgBackground.fitHeightProperty(), 0.9));
-        imgMainPicture.setPreserveRatio(true);
     }
 
 
@@ -164,7 +168,7 @@ public class MainController {
     private void analyzeColors(File imageFile) {
         Task<AtomicIntegerArray> colorCountTask = createColorCount(imageFile);
 
-        colorCountTask.setOnSucceeded(event -> {
+        /*colorCountTask.setOnSucceeded(event -> {
             AtomicIntegerArray counts = colorCountTask.getValue();
             updateChart(counts.get(0), counts.get(1), counts.get(2), counts.get(3));
         });
@@ -172,7 +176,7 @@ public class MainController {
         colorCountTask.setOnFailed(event -> {
             Throwable problem = colorCountTask.getException();
             System.out.println("Error during color analysis: " + problem.getMessage());
-        });
+        });*/
 
         new Thread(colorCountTask).start();
         colorCountTask.setOnSucceeded(event -> {

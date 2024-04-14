@@ -11,24 +11,23 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 
-<BorderPane id="borderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1020.0" stylesheets="gui/main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainController">
+<BorderPane id="borderpane" stylesheets="gui/main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainController">
    <center>
       <StackPane fx:id="centerStackPane" minHeight="0.0" minWidth="0.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView id="imgBackground" fx:id="imgBackground" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="imgBackground" fx:id="imgBackground" pickOnBounds="true" preserveRatio="true" scaleX="0.9" scaleY="0.9">
                <image>
                   <Image url="@Screenshot%202024-02-20%20235548.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgMainPicture" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgMainPicture" pickOnBounds="true" preserveRatio="true" scaleX="0.9" scaleY="0.9">
                <image>
                   <Image url="@Screenshot%202024-02-20%20235548.png" />
                </image>
             </ImageView>
-            <Label id="label" fx:id="label" prefHeight="25.0" prefWidth="150.0" stylesheets="gui/main.css" text="PICTURE NAME" StackPane.alignment="BOTTOM_CENTER" />
+            <Label id="label" fx:id="label" prefHeight="25.0" prefWidth="150.0" scaleX="0.01" scaleY="0.005" stylesheets="gui/main.css" text="PICTURE NAME" StackPane.alignment="BOTTOM_CENTER" />
          </children>
       </StackPane>
    </center>
@@ -60,16 +59,13 @@
       </MFXButton>
    </right>
    <bottom>
-      <Pane prefHeight="148.0" prefWidth="1020.0" BorderPane.alignment="CENTER">
-         <children>
-            <BarChart fx:id="colorChart" layoutX="385.0" layoutY="15.0" prefHeight="40.0" prefWidth="200.0">
-                <xAxis>
-                    <CategoryAxis label="Colors" />
-                </xAxis>
-                <yAxis>
-                    <NumberAxis label="Count" lowerBound="0" upperBound="1000" tickUnit="100"/>
-                </yAxis>
-            </BarChart>
-         </children></Pane>
+      <BarChart fx:id="colorChart" maxHeight="300.0" maxWidth="400.0" minHeight="0.0" minWidth="0.0" BorderPane.alignment="CENTER">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
    </bottom>
 </BorderPane>
