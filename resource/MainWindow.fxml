@@ -62,13 +62,13 @@
    <bottom>
       <Pane prefHeight="148.0" prefWidth="1020.0" BorderPane.alignment="CENTER">
          <children>
-            <BarChart layoutX="386.0" layoutY="14.0" prefHeight="41.0" prefWidth="200.0">
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
+            <BarChart fx:id="colorChart" layoutX="385.0" layoutY="15.0" prefHeight="40.0" prefWidth="200.0">
+                <xAxis>
+                    <CategoryAxis label="Colors" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Count" lowerBound="0" upperBound="1000" tickUnit="100"/>
+                </yAxis>
             </BarChart>
          </children></Pane>
    </bottom>
