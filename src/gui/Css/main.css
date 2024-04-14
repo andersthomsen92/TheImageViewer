@@ -4,7 +4,7 @@
 }
 
 #btnRight{
-    -fx-background-image: url(RightTriangle.png);
+    -fx-background-image: url(../RightTriangle.png);
     -fx-background-size: stretch;
     -fx-background-color: transparent;
     -fx-min-width: 70.77px;
@@ -12,7 +12,7 @@
 }
 
 #btnLeft{
-    -fx-background-image: url(LeftTriangle.png);
+    -fx-background-image: url(../LeftTriangle.png);
     -fx-background-size: stretch;
     -fx-background-color: transparent;
     -fx-min-width: 70.77px;
@@ -20,7 +20,7 @@
 }
 
 #burger {
-    -fx-background-image: url(Hamburger_icon.png);
+    -fx-background-image: url(../Hamburger_icon.png);
     -fx-background-color: transparent;
     -fx-background-size: stretch;
 }
@@ -66,4 +66,57 @@
     -fx-alignment: center;
     /* Gør den dynamisk somehow, sådan at størrelsen af baggrunden passer til teksten*/
 }
+
+/*BarChart*/
+
+.default-color0.chart-bar {
+    -fx-bar-fill: Red
+}
+
+.default-color1.chart-bar {
+    -fx-bar-fill: Green
+}
+
+.default-color2.chart-bar {
+    -fx-bar-fill: Blue
+}
+
+.default-color4.chart-bar {
+    -fx-bar-fill: Gray
+}
+
+.chart-content {
+    -fx-background-color: transparent;
+}
+
+.axis {
+    -fx-tick-label-fill: lightgrey;
+}
+
+.axis-label {
+    -fx-text-fill: white;
+}
+
+.chart-legend {
+    -fx-background-color: transparent;
+    -fx-opacity: 0;
+    -fx-min-width: 0;
+    -fx-min-height: 0;
+    -fx-pref-width: 0;
+    -fx-pref-height: 0;
+}
+
+
+
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.chart-horizontal-grid-lines,
+.chart-vertical-grid-lines {
+    -fx-stroke: transparent;
+    -fx-stroke-width: 0px;
+}
+
+
 

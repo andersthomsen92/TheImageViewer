@@ -1,11 +1,15 @@
 package gui;
 
+import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXToggleButton;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.image.Image;
@@ -44,45 +48,83 @@ public class MainController {
     private final AtomicBoolean slideshowRunning = new AtomicBoolean(false);
     @FXML
     private BarChart<String, Number> colorChart;
-    private XYChart.Series<String, Number> colorXYData;
+    private XYChart.Series<String, Number> colorXYDataRed;
+    private XYChart.Series<String, Number> colorXYDataGreen;
+    private XYChart.Series<String, Number> colorXYDataBlue;
+    private XYChart.Series<String, Number> colorXYDataGray;
     private String fileName = "";
+    @FXML
+    private Button LoadImageBtn;
+    @FXML
+    private MFXToggleButton tglBtnShowCount;
+    @FXML
+    private MFXButton btnPrev;
+    @FXML
+    private MFXButton btnNext;
+    @FXML
+    private Button loadImageBtn;
+
     public void initialize() {
 
-        BoxBlur blur = new BoxBlur(10, 10, 20); // Parameters: radius, iterations
-        imgBackground.setEffect(blur);
-        imgBackground.setOpacity(0.4);
+
         initDynamicElements();
         initXYSeries();
+
+        if (tglBtnShowCount.selectedProperty().getValue()){
+            colorChart.setVisible(true);
+        }else {
+            colorChart.setVisible(false);
+        }
     }
 
     private void initDynamicElements() {
         imgBackground.fitWidthProperty().bind(centerStackPane.widthProperty());
         imgBackground.fitHeightProperty().bind(centerStackPane.heightProperty());
+        BoxBlur blur = new BoxBlur(10, 10, 20); // Parameters: radius, iterations
+        imgBackground.setEffect(blur);
+        imgBackground.setOpacity(0.4);
 
         imgMainPicture.fitWidthProperty().bind(centerStackPane.widthProperty().multiply(0.9));
         imgMainPicture.fitHeightProperty().bind(centerStackPane.heightProperty().multiply(0.9));
+
+        if (tglBtnShowCount.selectedProperty().getValue());
 
 
     }
 
     private void initXYSeries() {
-        colorXYData = new XYChart.Series<>();
-        colorXYData.setName("Color Counts");
-        colorChart.getData().add(colorXYData);
+        colorXYDataRed = new XYChart.Series<>();
+        colorXYDataRed.setName("Red");
+        colorChart.getData().add(colorXYDataRed);
 
-        colorXYData.getData().add(new XYChart.Data<>("Red", 0));
-        colorXYData.getData().add(new XYChart.Data<>("Green", 0));
-        colorXYData.getData().add(new XYChart.Data<>("Blue", 0));
-        colorXYData.getData().add(new XYChart.Data<>("Mixed", 0));
+        colorXYDataGreen = new XYChart.Series<>();
+        colorXYDataGreen.setName("Green");
+        colorChart.getData().add(colorXYDataGreen);
+
+        colorXYDataBlue = new XYChart.Series<>();
+        colorXYDataBlue.setName("Blue");
+        colorChart.getData().add(colorXYDataBlue);
+
+        colorXYDataGray = new XYChart.Series<>();
+        colorXYDataGray.setName("Gray");
+        colorChart.getData().add(colorXYDataGray);
+
+        colorXYDataRed.getData().add(new XYChart.Data<>("Red", 0));
+        colorXYDataGreen.getData().add(new XYChart.Data<>("Green", 0));
+        colorXYDataBlue.getData().add(new XYChart.Data<>("Blue", 0));
+        colorXYDataGray.getData().add(new XYChart.Data<>("Gray", 0));
     }
 
 
     public void updateChart(int redCount, int greenCount, int blueCount, int mixedCount) {
         Platform.runLater(() -> {
-            colorXYData.getData().get(0).setYValue(redCount);
-            colorXYData.getData().get(1).setYValue(greenCount);
-            colorXYData.getData().get(2).setYValue(blueCount);
-            colorXYData.getData().get(3).setYValue(mixedCount);
+            colorXYDataRed.getData().get(0).setYValue(redCount);
+            colorXYDataGreen.getData().get(0).setYValue(greenCount);
+            colorXYDataBlue.getData().get(0).setYValue(blueCount);
+            colorXYDataGray.getData().get(0).setYValue(mixedCount);
+
+            colorChart.setVisible(true);
+            colorChart.setManaged(true);
         });
     }
 
@@ -140,43 +182,40 @@ public class MainController {
     }
 
     public void displayCurrentImage() {
-        // Display first image if images loaded
         if (!loadedImages.isEmpty() && currentImageIndex >= 0) {
             Image currentImage = loadedImages.get(currentImageIndex);
-            String imagePath = currentImage.getUrl();
-            //String fileName = new File(new URI(imagePath)).getName();
-            //analyzeColors(new File(imagePath));
+            Platform.runLater(() -> {
+                imgMainPicture.setImage(currentImage);
+                imgBackground.setImage(currentImage);
+                label.setText(extractFileNameFromImage(currentImage)); // Opdaterer label her
+                showHiddenElements();
+            });
+
+            // Udfør farveanalyse udenfor Platform.runLater for at undgå UI-tråds blokering
             try {
                 URI uri = new URI(currentImage.getUrl());
                 File imageFile = new File(uri);
-                fileName = new File(new URI(imagePath).getPath()).getName();
                 analyzeColors(imageFile);
             } catch (URISyntaxException e) {
                 e.printStackTrace();
                 System.out.println("Invalid URL for the image file.");
             }
-
-            Platform.runLater(() -> {
-                imgMainPicture.setImage(currentImage);
-                imgBackground.setImage(currentImage);
-                label.setText(fileName);
-            });
-
         }
     }
 
+    private void showHiddenElements() {
+        label.setVisible(true);
+        imgBackground.setVisible(true);
+        imgMainPicture.setVisible(true);
+        tglBtnShowCount.setVisible(true);
+        btnPrev.setVisible(true);
+        btnNext.setVisible(true);
+        loadImageBtn.setVisible(false);
+    }
+
+
     private void analyzeColors(File imageFile) {
         Task<AtomicIntegerArray> colorCountTask = createColorCount(imageFile);
-
-        /*colorCountTask.setOnSucceeded(event -> {
-            AtomicIntegerArray counts = colorCountTask.getValue();
-            updateChart(counts.get(0), counts.get(1), counts.get(2), counts.get(3));
-        });
-
-        colorCountTask.setOnFailed(event -> {
-            Throwable problem = colorCountTask.getException();
-            System.out.println("Error during color analysis: " + problem.getMessage());
-        });*/
 
         new Thread(colorCountTask).start();
         colorCountTask.setOnSucceeded(event -> {
@@ -197,23 +236,21 @@ public class MainController {
 
         slideshowExecutor = Executors.newSingleThreadScheduledExecutor();
         slideshowExecutor.scheduleAtFixedRate(() -> {
-            Platform.runLater(() -> {
-                currentImageIndex = (currentImageIndex + 1) % loadedImages.size();
-                Image currentImage = loadedImages.get(currentImageIndex);
-                imgMainPicture.setImage(currentImage);
-                imgBackground.setImage(currentImage);
-                // Update the label with the filename of the currently displayed image
-                String fileName = extractFileNameFromImage(currentImage);
-                label.setText(fileName); // Assuming you have a method to extract the file name
-            });
+            onDisplayNextImage();
         }, 1, 1, TimeUnit.SECONDS); // Change images every 1 second
     }
 
 
 
     private String extractFileNameFromImage(Image image) {
-        String path = image.getUrl();
-        return path.substring(path.lastIndexOf('/') + 1); // Extract the file name
+        try {
+            URI uri = new URI(image.getUrl());
+            File file = new File(uri);
+            return file.getName();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+            return ""; // Returner en tom streng eller en fejlmeddelelse
+        }
     }
 
     public void onStopSlideshow() {
@@ -258,6 +295,15 @@ public class MainController {
             }
 
         };
+    }
+
+    @FXML
+    private void onLoadImageBtn(ActionEvent actionEvent) {
+        onLoadImages();
+        if (!loadedImages.isEmpty() && currentImageIndex >= 0){
+
+
+        }
     }
 }
 
