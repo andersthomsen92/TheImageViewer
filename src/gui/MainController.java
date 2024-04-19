@@ -69,12 +69,21 @@ public class MainController {
 
         initDynamicElements();
         initXYSeries();
+        initColorChatListener();
 
-        if (tglBtnShowCount.selectedProperty().getValue()){
-            colorChart.setVisible(true);
-        }else {
-            colorChart.setVisible(false);
-        }
+
+    }
+
+    private void initColorChatListener() {
+        tglBtnShowCount.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (tglBtnShowCount.selectedProperty().getValue() == true){
+                colorChart.setVisible(true);
+                colorChart.setManaged(true);
+            }else {
+                colorChart.setVisible(false);
+                colorChart.setManaged(false);
+            }
+        });
     }
 
     private void initDynamicElements() {
@@ -88,8 +97,6 @@ public class MainController {
         imgMainPicture.fitHeightProperty().bind(centerStackPane.heightProperty().multiply(0.9));
 
         if (tglBtnShowCount.selectedProperty().getValue());
-
-
     }
 
     private void initXYSeries() {
@@ -123,8 +130,8 @@ public class MainController {
             colorXYDataBlue.getData().get(0).setYValue(blueCount);
             colorXYDataGray.getData().get(0).setYValue(mixedCount);
 
-            colorChart.setVisible(true);
-            colorChart.setManaged(true);
+            //colorChart.setVisible(true);
+            //colorChart.setManaged(true);
         });
     }
 

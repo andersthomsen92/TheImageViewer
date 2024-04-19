@@ -10,31 +10,28 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane id="borderpane" stylesheets="gui/Css/main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainController">
    <center>
       <StackPane fx:id="centerStackPane" minHeight="0.0" minWidth="0.0" BorderPane.alignment="CENTER">
          <children>
             <ImageView id="imgBackground" fx:id="imgBackground" pickOnBounds="true" preserveRatio="true" scaleX="0.9" scaleY="0.9" visible="false">
-               <image>
-                  <Image url="@Screenshot%202024-02-20%20235548.png" />
-               </image>
             </ImageView>
             <ImageView fx:id="imgMainPicture" pickOnBounds="true" preserveRatio="true" scaleX="0.9" scaleY="0.9" visible="false">
-               <image>
-                  <Image url="@Screenshot%202024-02-20%20235548.png" />
-               </image>
             </ImageView>
             <Label id="label" fx:id="label" prefHeight="25.0" prefWidth="150.0" stylesheets="gui/Css/main.css" text="PICTURE NAME" visible="false" StackPane.alignment="BOTTOM_CENTER">
                <StackPane.margin>
                   <Insets bottom="50.0" />
                </StackPane.margin></Label>
-            <MFXToggleButton fx:id="tglBtnShowCount" text="Toggle Color Count" visible="false" StackPane.alignment="BOTTOM_CENTER" />
-            <Button mnemonicParsing="false" fx:id="loadImageBtn" onAction="#onLoadImageBtn" prefHeight="300.0" prefWidth="500.0" text="Button" />
+            <MFXToggleButton fx:id="tglBtnShowCount" text="Toggle Color Count" textFill="WHITE" visible="false" StackPane.alignment="BOTTOM_CENTER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></MFXToggleButton>
+            <Button id="loadImageBtn" fx:id="loadImageBtn" mnemonicParsing="false" onAction="#onLoadImageBtn" prefHeight="300.0" prefWidth="500.0" text="Load Images" />
          </children>
          <BorderPane.margin>
             <Insets />
@@ -42,7 +39,7 @@
       </StackPane>
    </center>
    <top>
-      <MenuButton id="burger" mnemonicParsing="false" prefHeight="35.0" prefWidth="40.0" BorderPane.alignment="TOP_LEFT">
+      <MenuButton id="burger" mnemonicParsing="false" prefHeight="55.0" prefWidth="60.0" BorderPane.alignment="TOP_LEFT">
         <items>
           <MenuItem mnemonicParsing="false" onAction="#onLoadImages" text="Load Images" />
           <MenuItem fx:id="startSlideshow" mnemonicParsing="false" onAction="#onStartSlideshow" text="Start Slideshow" />
@@ -62,7 +59,7 @@
       </MFXButton>
    </left>
    <right>
-      <MFXButton id="btnRight"  fx:id="btnNext" buttonType="RAISED" onAction="#onDisplayNextImage" text=" " visible="false" BorderPane.alignment="CENTER">
+      <MFXButton id="btnRight" fx:id="btnNext" buttonType="RAISED" onAction="#onDisplayNextImage" text=" " visible="false" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets right="20.0" />
          </BorderPane.margin>
